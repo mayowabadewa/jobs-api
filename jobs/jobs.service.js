@@ -30,6 +30,24 @@ const createJob =  async({
 
 }
 
+const GetAllJobs = async({location, status, mode}) => {
+    const query = {}
+
+    if (location) {
+        query.location = location;
+    }
+    if (status) {
+        query.status = status;
+    }
+    if (mode) {
+        query.mode = mode;
+    }
+
+    const jobs = await JobModel.find(query);
+    return jobs;
+}
+
 module.exports = {
-    createJob
+    createJob,
+    GetAllJobs
 }
